@@ -52,9 +52,9 @@ export default createGlobalStyle`
   }
 
   body {
-    background: #FFF;
+    background: ${(props) => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.text};
     overscroll-behavior: none;
     overflow-x: hidden;
   }
-
 `
