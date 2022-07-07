@@ -7,4 +7,5 @@ export const Container = styled(c)`
   display: flex;
   justify-content: space-between;
   position: relative;
+  z-index: 2;
 `
