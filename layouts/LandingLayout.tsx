@@ -1,5 +1,5 @@
-import Cursor from '~/components/cursor/Cursor'
-import Header from '~/components/header/Header'
+import Cursor from '~/components/common/cursor/Cursor'
+import Header from '~/components/common/header/Header'
 
 const LandingLayout: React.FC<{ children: JSX.Element }> = ({ children }) => {
   return (
