@@ -10,8 +10,8 @@ const Cursor = () => {
     const onMouseMoveHandler = (event: MouseEvent) => {
       const { current } = cursorRef
       if (!current) return
-      current.style.left = `${event.clientX}px`
-      current.style.top = `${event.clientY}px`
+      current.style.left = `${event.pageX}px`
+      current.style.top = `${event.pageY}px`
     }
 
     window.addEventListener('mousemove', onMouseMoveHandler)

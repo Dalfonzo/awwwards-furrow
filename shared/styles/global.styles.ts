@@ -44,11 +44,11 @@ export default createGlobalStyle`
   *::after {
     box-sizing: inherit;
   }
-  /* ,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+
   html {
     box-sizing: border-box;
     font-size: 16px;
-    font-family:'Calibre';
+    font-family:'Calibre' ,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
   body {

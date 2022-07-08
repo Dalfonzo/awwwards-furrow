@@ -27,7 +27,7 @@ const Hero = () => {
   }, [width, height, isDarkMode])
 
   const onMouseMoveHandler: MouseEventHandler<HTMLCanvasElement> = (event) => {
-    const { clientX: currentX, clientY: currentY } = event
+    const { pageX: currentX, pageY: currentY } = event
 
     if (!ctxRef.current) return
 
@@ -51,6 +51,10 @@ const Hero = () => {
     <S.Container onMouseLeave={setCursorToNormalStyle} onMouseEnter={setCursorToHoverStyle}>
       <S.Video src="/assets/video/featured-video.mp4" autoPlay loop width={width} height={height} muted playsInline />
       <S.Canvas width={width} height={height} ref={canvasRef} onMouseMove={onMouseMoveHandler} />
+      <S.H1>
+        <span>DIG</span>
+        <span>DEEP</span>
+      </S.H1>
     </S.Container>
   )
 }

@@ -14,3 +14,16 @@ export const Container = styled.main`
 export const Video = styled.video`
   object-fit: cover;
 `
+
+export const H1 = styled.h1`
+  position: absolute;
+  bottom: -146px;
+  left: -20px;
+  font-size: 26.25rem;
+  pointer-events: none;
+  font-weight: 900;
+  line-height: 0.67;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+`
