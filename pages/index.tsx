@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Featured from '~/components/home/featured'
 import Hero from '~/components/home/hero'
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Hero />
+      <Featured />
     </div>
   )
 }
