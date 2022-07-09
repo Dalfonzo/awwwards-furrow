@@ -32,6 +32,18 @@ export default createGlobalStyle`
     src: url('/assets/fonts/Calibre-Black.ttf') format('truetype');
   }
 
+  @font-face {
+    font-family: 'Presicav';
+    font-weight: 400;
+    src: url('/assets/fonts/PresicavRg-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Presicav';
+    font-weight: 800;
+    src: url('/assets/fonts/PresicavRg-Bold.ttf') format('truetype');
+  }
+
   * {
     margin: 0;
     padding: 0;
