@@ -4,7 +4,14 @@ import * as S from './Cursor.styles'
 
 const Cursor = () => {
   const cursorRef = useRef<HTMLDivElement>(null)
-  const { isAccented, isNormal, isHovered } = useCursorStyle()
+  const {
+    isHovered,
+    isHoveredWithAccent,
+    isHoveredWithInvertedAccent,
+    isNormal,
+    isNormalWithAccent,
+    isNormalWithInvertedAccent,
+  } = useCursorStyle()
 
   useEffect(() => {
     const onMouseMoveHandler = (event: MouseEvent) => {
@@ -21,7 +28,17 @@ const Cursor = () => {
     }
   }, [])
 
-  return <S.Cursor accent={isAccented} normal={isNormal} hover={isHovered} ref={cursorRef} />
+  return (
+    <S.Cursor
+      isHovered={isHovered}
+      isHoveredWithAccent={isHoveredWithAccent}
+      isHoveredWithInvertedAccent={isHoveredWithInvertedAccent}
+      isNormal={isNormal}
+      isNormalWithAccent={isNormalWithAccent}
+      isNormalWithInvertedAccent={isNormalWithInvertedAccent}
+      ref={cursorRef}
+    />
+  )
 }
 
 export default Cursor

@@ -1,9 +1,12 @@
 import styled, { css } from 'styled-components'
 
 interface CursorI {
-  hover: boolean
-  normal: boolean
-  accent: boolean
+  isHovered: boolean
+  isHoveredWithAccent: boolean
+  isHoveredWithInvertedAccent: boolean
+  isNormal: boolean
+  isNormalWithAccent: boolean
+  isNormalWithInvertedAccent: boolean
 }
 
 export const Cursor = styled.div<CursorI>`
@@ -16,23 +19,47 @@ export const Cursor = styled.div<CursorI>`
   pointer-events: none;
 
   ${(props) =>
-    props.normal &&
+    props.isNormal &&
+    css`
+      height: 2.2rem;
+      width: 2.2rem;
+      background: ${(props) => props.theme.colors.text};
+    `};
+
+  ${(props) =>
+    props.isNormalWithAccent &&
     css`
       height: 2.2rem;
       width: 2.2rem;
       background: ${(props) => props.theme.colors.accent};
+    `};
+
+  ${(props) =>
+    props.isNormalWithInvertedAccent &&
+    css`
+      height: 2.2rem;
+      width: 2.2rem;
+      background: ${(props) => props.theme.colors.primary};
     `}
 
   ${(props) =>
-    props.hover &&
+    props.isHovered &&
+    css`
+      height: 4rem;
+      width: 4rem;
+      border: 5px solid ${(props) => props.theme.colors.text};
+    `};
+
+  ${(props) =>
+    props.isHoveredWithAccent &&
     css`
       height: 4rem;
       width: 4rem;
       border: 5px solid ${(props) => props.theme.colors.accent};
-    `}
+    `};
 
   ${(props) =>
-    props.accent &&
+    props.isHoveredWithInvertedAccent &&
     css`
       height: 4rem;
       width: 4rem;

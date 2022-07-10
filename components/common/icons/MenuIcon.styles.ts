@@ -8,6 +8,7 @@ export const Menu = styled.div<MenuIconI>`
   width: calc(${height} * 5);
   position: absolute;
   right: 0;
+  color: ${(props) => props.theme.colors.text};
 
   ${(props) =>
     props.header &&
@@ -24,7 +25,7 @@ export const Menu = styled.div<MenuIconI>`
   &:before,
   &:after {
     content: '';
-    background: ${(props) => props.theme.colors.text};
+    background: currentColor;
     height: ${height};
     width: calc(${height} * 5);
     position: absolute;
