@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import AllProjects from '~/components/home/all-projects'
 import Featured from '~/components/home/featured'
+import Footer from '~/components/home/footer'
 import Hero from '~/components/home/hero'
 import Services from '~/components/home/services'
 
@@ -16,6 +17,7 @@ const Home = () => {
       <Featured />
       <AllProjects />
       <Services />
+      <Footer />
     </div>
   )
 }

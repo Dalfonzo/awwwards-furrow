@@ -4,9 +4,10 @@ import Header from '~/components/common/header/Header'
 const LandingLayout: React.FC<{ children: JSX.Element }> = ({ children }) => {
   return (
     <>
-      <Header />
+      <Header asFooter={false} />
       <Cursor />
       {children}
+      <Header asFooter={true} />
     </>
   )
 }
