@@ -7,7 +7,7 @@ const Accordion = () => {
   const { setCursorToHoverAccentStyle, setCursorToNormalAccentStyle } = useCursorStyle()
 
   return (
-    <div>
+    <>
       <S.Heading>Services</S.Heading>
       <S.List>
         <S.Item>
@@ -86,7 +86,7 @@ const Accordion = () => {
           </S.Content>
         </S.Item>
       </S.List>
-    </div>
+    </>
   )
 }
 
