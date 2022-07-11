@@ -15,12 +15,23 @@ export const InnerContainer = styled.div<InnerContainerI>`
   ${(props) =>
     props.spaceAsPadding &&
     css`
-      padding: 0 8.3%;
+      padding-left: 100px;
     `}
 
   ${(props) =>
     props.spaceAsMargin &&
     css`
-      margin: 0 8.3%;
+      margin-left: 100px;
     `}
+`
+
+export const H2 = styled.h2`
+  font-size: 2.625rem;
+  font-weight: 500;
+  line-height: 1;
+`
+
+export const H3 = styled.h3`
+  font-size: 1.25rem;
+  font-weight: bold;
 `

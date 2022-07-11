@@ -7,14 +7,13 @@ export const Container = styled(C)`
 `
 
 export const Menu = styled(MenuIcon)`
-  border: 1px solid red;
   position: relative;
   color: ${(props) => props.theme.colors.background};
   margin-left: 2rem;
 `
 
 export const Button = styled.button`
-  background-color: red;
+  background-color: ${(props) => props.theme.colors.accent};
   border: none;
   font-family: 'Presicav';
   color: ${(props) => props.theme.colors.background};

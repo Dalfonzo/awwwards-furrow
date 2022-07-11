@@ -1,16 +1,15 @@
 import styled from 'styled-components'
-import { Container as C, InnerContainer as IC } from '~/shared/styles/common.styles'
+import { Container as C, H2, H3, InnerContainer as IC } from '~/shared/styles/common.styles'
 
 export const Container = styled(C)`
   margin-top: 305px;
 `
 
-export const InnerContainer = styled(IC)``
+export const InnerContainer = styled(IC)`
+  margin-right: 100px;
+`
 
-export const Text = styled.h2`
-  font-size: 2.625rem;
-  font-weight: 500;
-  line-height: 1;
+export const Text = styled(H2)`
   margin: 0;
   max-width: 640px;
   margin-bottom: 210px;
@@ -72,9 +71,7 @@ export const TopContent = styled.div`
   }
 `
 
-export const Header = styled.h3`
-  font-size: 20px;
-`
+export const Header = styled(H3)``
 
 export const Description = styled.p`
   font-size: 14px;
