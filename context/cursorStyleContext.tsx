@@ -1,33 +1,38 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, Dispatch, SetStateAction, useContext, useState } from 'react'
 
-type StateI = 'normal' | 'normal-accent' | 'normal-inverted-accent' | 'hover' | 'hover-accent' | 'hover-inverted-accent'
+type CursorStyleStateI =
+  | 'normal'
+  | 'normal-accent'
+  | 'normal-inverted-accent'
+  | 'hover'
+  | 'hover-accent'
+  | 'hover-inverted-accent'
+  | 'locked-accent'
+  | 'locked-inverted-accent'
 
-interface CursorContextI {
+interface CursorPositionStateI {
+  x: number
+  y: number
+}
+
+interface CursorContextI extends CursorPositionStateI {
   isHovered: boolean
   isHoveredWithAccent: boolean
   isHoveredWithInvertedAccent: boolean
   isNormal: boolean
   isNormalWithAccent: boolean
   isNormalWithInvertedAccent: boolean
-  setCursorToNormalStyle(): void
-  setCursorToHoverStyle(): void
-  setCursorToNormalAccentStyle(): void
-  setCursorToNormalInvertedAccentStyle(): void
-  setCursorToHoverAccentStyle(): void
-  setCursorToHoverInvertedAccentStyle(): void
+  isLockedWithAccent: boolean
+  isLockedWithInvertedAccent: boolean
+  setCursorStyle: Dispatch<SetStateAction<CursorStyleStateI>>
+  setCursorPosition: Dispatch<SetStateAction<CursorPositionStateI>>
 }
 
 const CursorContext = createContext<CursorContextI | null>(null)
 
 const CursorStyleProvider = ({ children }: { children: React.ReactNode }) => {
-  const [cursorStyle, setCursorStyle] = useState<StateI>('normal')
-
-  const setCursorToHoverAccentStyle = () => setCursorStyle('hover-accent')
-  const setCursorToHoverInvertedAccentStyle = () => setCursorStyle('hover-inverted-accent')
-  const setCursorToHoverStyle = () => setCursorStyle('hover')
-  const setCursorToNormalAccentStyle = () => setCursorStyle('normal-accent')
-  const setCursorToNormalInvertedAccentStyle = () => setCursorStyle('normal-inverted-accent')
-  const setCursorToNormalStyle = () => setCursorStyle('normal')
+  const [cursorStyle, setCursorStyle] = useState<CursorStyleStateI>('normal')
+  const [{ x, y }, setCursorPosition] = useState<CursorPositionStateI>({ x: 0, y: 0 })
 
   const isHovered = cursorStyle === 'hover'
   const isHoveredWithAccent = cursorStyle === 'hover-accent'
@@ -35,6 +40,8 @@ const CursorStyleProvider = ({ children }: { children: React.ReactNode }) => {
   const isNormal = cursorStyle === 'normal'
   const isNormalWithAccent = cursorStyle === 'normal-accent'
   const isNormalWithInvertedAccent = cursorStyle === 'normal-inverted-accent'
+  const isLockedWithAccent = cursorStyle === 'locked-accent'
+  const isLockedWithInvertedAccent = cursorStyle === 'locked-inverted-accent'
 
   return (
     <CursorContext.Provider
@@ -42,15 +49,15 @@ const CursorStyleProvider = ({ children }: { children: React.ReactNode }) => {
         isHovered,
         isHoveredWithAccent,
         isHoveredWithInvertedAccent,
+        isLockedWithAccent,
+        isLockedWithInvertedAccent,
         isNormal,
         isNormalWithAccent,
         isNormalWithInvertedAccent,
-        setCursorToHoverAccentStyle,
-        setCursorToHoverInvertedAccentStyle,
-        setCursorToHoverStyle,
-        setCursorToNormalAccentStyle,
-        setCursorToNormalInvertedAccentStyle,
-        setCursorToNormalStyle,
+        setCursorStyle,
+        x,
+        y,
+        setCursorPosition,
       }}
     >
       {children}
