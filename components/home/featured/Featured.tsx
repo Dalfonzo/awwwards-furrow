@@ -4,7 +4,7 @@ import { useCursorStyle } from '~/context/cursorStyleContext'
 import * as S from './Featured.styles'
 
 const Featured = () => {
-  const { setCursorToHoverAccentStyle, setCursorToNormalAccentStyle } = useCursorStyle()
+  const { setCursorStyle } = useCursorStyle()
 
   return (
     <S.Container as={'section'}>
@@ -15,7 +15,10 @@ const Featured = () => {
         </S.Text>
       </S.InnerContainer>
       <Link href="#">
-        <S.VideoWrapper onMouseEnter={setCursorToHoverAccentStyle} onMouseLeave={setCursorToNormalAccentStyle}>
+        <S.VideoWrapper
+          onMouseEnter={() => setCursorStyle('hover-accent')}
+          onMouseLeave={() => setCursorStyle('normal-accent')}
+        >
           <S.Video src="/assets/video/featured-video.mp4" autoPlay loop muted playsInline />
           <S.TopContent>
             <S.InnerContainer spaceAsPadding>

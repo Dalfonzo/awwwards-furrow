@@ -4,7 +4,7 @@ import * as S from './Accordion.styles'
 
 const Accordion = () => {
   const [visibleItem, setVisibleItem] = useState(0)
-  const { setCursorToHoverAccentStyle, setCursorToNormalAccentStyle } = useCursorStyle()
+  const { setCursorStyle } = useCursorStyle()
 
   return (
     <>
@@ -14,8 +14,8 @@ const Accordion = () => {
           <S.Title
             onClick={() => setVisibleItem(0)}
             className={visibleItem === 0 ? 'open' : ''}
-            onMouseEnter={() => !(visibleItem === 0) && setCursorToHoverAccentStyle()}
-            onMouseLeave={setCursorToNormalAccentStyle}
+            onMouseEnter={() => !(visibleItem === 0) && setCursorStyle('hover-accent')}
+            onMouseLeave={() => setCursorStyle('normal-accent')}
           >
             Pre-Production
           </S.Title>
@@ -33,8 +33,8 @@ const Accordion = () => {
           <S.Title
             onClick={() => setVisibleItem(1)}
             className={visibleItem === 1 ? 'open' : ''}
-            onMouseEnter={() => !(visibleItem === 1) && setCursorToHoverAccentStyle()}
-            onMouseLeave={setCursorToNormalAccentStyle}
+            onMouseEnter={() => !(visibleItem === 1) && setCursorStyle('hover-accent')}
+            onMouseLeave={() => setCursorStyle('normal-accent')}
           >
             Video Production
           </S.Title>
@@ -50,8 +50,8 @@ const Accordion = () => {
           <S.Title
             onClick={() => setVisibleItem(2)}
             className={visibleItem === 2 ? 'open' : ''}
-            onMouseEnter={() => !(visibleItem === 2) && setCursorToHoverAccentStyle()}
-            onMouseLeave={setCursorToNormalAccentStyle}
+            onMouseEnter={() => !(visibleItem === 2) && setCursorStyle('hover-accent')}
+            onMouseLeave={() => setCursorStyle('normal-accent')}
           >
             Post-Production
           </S.Title>
@@ -72,8 +72,8 @@ const Accordion = () => {
           <S.Title
             onClick={() => setVisibleItem(3)}
             className={visibleItem === 3 ? 'open' : ''}
-            onMouseEnter={() => !(visibleItem === 3) && setCursorToHoverAccentStyle()}
-            onMouseLeave={setCursorToNormalAccentStyle}
+            onMouseEnter={() => !(visibleItem === 3) && setCursorStyle('hover-accent')}
+            onMouseLeave={() => setCursorStyle('normal-accent')}
           >
             Audio Post-Production
           </S.Title>

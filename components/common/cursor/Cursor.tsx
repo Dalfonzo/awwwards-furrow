@@ -11,14 +11,18 @@ const Cursor = () => {
     isNormal,
     isNormalWithAccent,
     isNormalWithInvertedAccent,
+    isLockedWithAccent,
+    isLockedWithInvertedAccent,
+    x,
+    y,
   } = useCursorStyle()
 
   useEffect(() => {
     const onMouseMoveHandler = (event: MouseEvent) => {
       const { current } = cursorRef
       if (!current) return
-      current.style.left = `${event.pageX}px`
-      current.style.top = `${event.pageY}px`
+      current.style.left = isLockedWithAccent || isLockedWithInvertedAccent ? `${x}px` : `${event.pageX}px`
+      current.style.top = isLockedWithAccent || isLockedWithInvertedAccent ? `${y}px` : `${event.pageY}px`
     }
 
     window.addEventListener('mousemove', onMouseMoveHandler)
@@ -26,7 +30,7 @@ const Cursor = () => {
     return () => {
       window.removeEventListener('mousemove', onMouseMoveHandler)
     }
-  }, [])
+  }, [isLockedWithAccent, isLockedWithInvertedAccent, x, y])
 
   return (
     <S.Cursor
@@ -36,6 +40,8 @@ const Cursor = () => {
       isNormal={isNormal}
       isNormalWithAccent={isNormalWithAccent}
       isNormalWithInvertedAccent={isNormalWithInvertedAccent}
+      isLockedWithAccent={isLockedWithAccent}
+      isLockedWithInvertedAccent={isLockedWithInvertedAccent}
       ref={cursorRef}
     />
   )

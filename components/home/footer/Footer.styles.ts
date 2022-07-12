@@ -13,18 +13,21 @@ export const Container = styled(C)`
     color: ${(props) => props.theme.colors.text};
   }
 
-  & div:last-child {
+  & div:last-child,
+  & span {
     display: flex;
     align-items: center;
     justify-content: center;
+  }
 
-    & > * {
+  & div:last-child {
+    & span > svg {
       margin: 0.7rem;
       fill: ${(props) => props.theme.colors.accent};
+    }
 
-      &:hover {
-        fill: ${(props) => props.theme.colors.text};
-      }
+    & span:hover svg {
+      fill: ${(props) => props.theme.colors.text};
     }
   }
 `

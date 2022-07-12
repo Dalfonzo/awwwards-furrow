@@ -9,7 +9,7 @@ const Hero = () => {
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null)
   const { height, width } = useWindowSize()
   const { isDarkMode } = useCustomTheme()
-  const { setCursorToHoverAccentStyle, setCursorToNormalAccentStyle } = useCursorStyle()
+  const { setCursorStyle } = useCursorStyle()
 
   const [, setMousePosition] = useState({ x: 0, y: 0 })
 
@@ -48,7 +48,10 @@ const Hero = () => {
   }
 
   return (
-    <S.Container onMouseLeave={setCursorToNormalAccentStyle} onMouseEnter={setCursorToHoverAccentStyle}>
+    <S.Container
+      onMouseLeave={() => setCursorStyle('normal-accent')}
+      onMouseEnter={() => setCursorStyle('hover-accent')}
+    >
       <S.Video src="/assets/video/featured-video.mp4" autoPlay loop width={width} height={height} muted playsInline />
       <S.Canvas width={width} height={height} ref={canvasRef} onMouseMove={onMouseMoveHandler} />
       <S.H1>

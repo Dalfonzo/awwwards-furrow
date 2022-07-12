@@ -7,6 +7,8 @@ interface CursorI {
   isNormal: boolean
   isNormalWithAccent: boolean
   isNormalWithInvertedAccent: boolean
+  isLockedWithAccent: boolean
+  isLockedWithInvertedAccent: boolean
 }
 
 export const Cursor = styled.div<CursorI>`
@@ -51,7 +53,7 @@ export const Cursor = styled.div<CursorI>`
     `};
 
   ${(props) =>
-    props.isHoveredWithAccent &&
+    (props.isHoveredWithAccent || props.isLockedWithAccent) &&
     css`
       height: 4rem;
       width: 4rem;
@@ -59,7 +61,7 @@ export const Cursor = styled.div<CursorI>`
     `};
 
   ${(props) =>
-    props.isHoveredWithInvertedAccent &&
+    (props.isHoveredWithInvertedAccent || props.isLockedWithInvertedAccent) &&
     css`
       height: 4rem;
       width: 4rem;
