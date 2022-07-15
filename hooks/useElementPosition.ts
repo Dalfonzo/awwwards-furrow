@@ -1,8 +1,8 @@
 import { RefObject, useEffect, useState } from 'react'
-import useWindowSize from './useWindowSize'
+import { useLayoutDimensions } from '~/context/layoutDimensionsContext'
 
 export const useElementPosition = ({ elementRef }: { elementRef: RefObject<HTMLElement> }) => {
-  const { height, width } = useWindowSize()
+  const { height, width } = useLayoutDimensions()
   const [elementPosition, setElementPosition] = useState({ x: 0, y: 0 })
 
   useEffect(() => {
