@@ -1,16 +1,18 @@
 import { useRef } from 'react'
 import { FacebookIcon, InstagramIcon, VimeoIcon } from '~/components/common/icons'
 import { useCursorStyle } from '~/context/cursorStyleContext'
+import { useMenu } from '~/context/menuContext'
 import { useElementPosition } from '~/hooks/useElementPosition'
 import * as S from './Socials.styles'
 
 const Socials = ({ accentColor }: { accentColor?: boolean }) => {
   const instagramIconRef = useRef<HTMLElement>(null)
+  const { isMenuOpen } = useMenu()
   const vimeoIconRef = useRef<HTMLElement>(null)
   const facebookIconRef = useRef<HTMLElement>(null)
-  const { x: instagramX, y: instagramY } = useElementPosition({ elementRef: instagramIconRef })
-  const { x: vimeoX, y: vimeoY } = useElementPosition({ elementRef: vimeoIconRef })
-  const { x: facebookX, y: facebookY } = useElementPosition({ elementRef: facebookIconRef })
+  const { x: instagramX, y: instagramY } = useElementPosition({ elementRef: instagramIconRef, deps: [isMenuOpen] })
+  const { x: vimeoX, y: vimeoY } = useElementPosition({ elementRef: vimeoIconRef, deps: [isMenuOpen] })
+  const { x: facebookX, y: facebookY } = useElementPosition({ elementRef: facebookIconRef, deps: [isMenuOpen] })
   const { setCursorStyle, setCursorPosition } = useCursorStyle()
 
   const onMouseEnterHandler = ({ x, y }: { x: number; y: number }) => {

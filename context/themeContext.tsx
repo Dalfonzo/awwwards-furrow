@@ -1,6 +1,7 @@
 import { createContext, useContext, useState } from 'react'
 import { DefaultTheme } from 'styled-components'
 import { darkTheme, lightTheme } from '~/shared/theme'
+import { ThemeProvider } from 'styled-components'
 
 interface ThemeContextI {
   theme: DefaultTheme
@@ -31,7 +32,7 @@ const CustomThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <ThemeContext.Provider value={{ theme: currentTheme.theme, toggleTheme, isLightMode, isDarkMode }}>
-      {children}
+      <ThemeProvider theme={currentTheme.theme}>{children}</ThemeProvider>
     </ThemeContext.Provider>
   )
 }

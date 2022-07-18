@@ -49,7 +49,7 @@ const Menu = ({ isMenuOpen, children }: { isMenuOpen: boolean; children: ReactNo
   ]
 
   return (
-    <S.Wrapper isMenuOpen={isMenuOpen}>
+    <S.Wrapper isMenuOpen={isMenuOpen} onMouseEnter={() => setCursorStyle('normal')}>
       <S.Container>
         <S.Heading>
           <S.Title>Projects</S.Title>

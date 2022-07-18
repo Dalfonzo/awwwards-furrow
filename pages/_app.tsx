@@ -1,17 +1,15 @@
 import type { AppProps } from 'next/app'
-import { ThemeProvider } from 'styled-components'
 import { CursorStyleProvider } from '~/context/cursorStyleContext'
 import { LayoutDimensionsProvider } from '~/context/layoutDimensionsContext'
-import { CustomThemeProvider, useCustomTheme } from '~/context/themeContext'
+import { MenuProvider } from '~/context/menuContext'
+import { CustomThemeProvider } from '~/context/themeContext'
 import LandingLayout from '~/layouts/LandingLayout'
 import GlobalStyles from '~/shared/styles/global.styles'
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { theme } = useCustomTheme()
-
   return (
     <CustomThemeProvider>
-      <ThemeProvider theme={theme}>
+      <MenuProvider>
         <CursorStyleProvider>
           <LayoutDimensionsProvider>
             <LandingLayout>
@@ -22,7 +20,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             </LandingLayout>
           </LayoutDimensionsProvider>
         </CursorStyleProvider>
-      </ThemeProvider>
+      </MenuProvider>
     </CustomThemeProvider>
   )
 }

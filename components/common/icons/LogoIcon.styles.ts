@@ -7,7 +7,7 @@ export const Path = styled.path<{ accent?: boolean }>`
 
 export const Logo = styled.div<LogoIconI>`
   position: absolute;
-  left: 0;
+  left: 2rem;
 
   ${(props) =>
     props.header &&

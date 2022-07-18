@@ -6,11 +6,12 @@ export interface MenuIconI extends React.HTMLAttributes<HTMLDivElement> {
   header?: boolean
   footer?: boolean
   isMenuOpen: boolean
+  noLabel?: boolean
 }
 
-const MenuIcon = React.forwardRef<HTMLDivElement, MenuIconI>(({ isMenuOpen, ...rest }, ref) => (
+const MenuIcon = React.forwardRef<HTMLDivElement, MenuIconI>(({ isMenuOpen, noLabel, ...rest }, ref) => (
   <S.MenuWrapper {...rest} isMenuOpen={isMenuOpen}>
-    <S.MenuTitle>{isMenuOpen ? 'Close' : 'Projects'}</S.MenuTitle>
+    {!noLabel && <S.MenuTitle>{isMenuOpen ? 'Close' : 'Projects'}</S.MenuTitle>}
     <S.Menu ref={ref} isOpen={isMenuOpen} />
   </S.MenuWrapper>
 ))
