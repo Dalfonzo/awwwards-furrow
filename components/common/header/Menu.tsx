@@ -1,6 +1,8 @@
+import { AnimatePresence } from 'framer-motion'
 import { ReactNode, useRef, useState } from 'react'
 import { useCursorStyle } from '~/context/cursorStyleContext'
 import { useElementPosition } from '~/hooks/useElementPosition'
+import { ArrowRightIcon } from '../icons'
 import Socials from '../socials/Socials'
 import * as S from './Menu.styles'
 
@@ -48,46 +50,105 @@ const Menu = ({ isMenuOpen, children }: { isMenuOpen: boolean; children: ReactNo
     },
   ]
 
+  const containerVariant = {
+    hidden: { left: '-110%', transition: { duration: 0.7, ease: [0.6, 0.05, -0.01, 0.8] } },
+    visible: { left: '0', transition: { duration: 0.7, ease: [0.6, 0.05, -0.01, 0.8], staggerChildren: 0.1 } },
+  }
+
+  const childVariants = {
+    visible: { opacity: 1, marginLeft: '0px', transition: { duration: 0.8 } },
+    hidden: { opacity: 0, marginLeft: '-20%' },
+  }
+
   return (
-    <S.Wrapper isMenuOpen={isMenuOpen} onMouseEnter={() => setCursorStyle('normal')}>
-      <S.Container>
-        <S.Heading>
-          <S.Title>Projects</S.Title>
-          {children}
-        </S.Heading>
-        <S.List>
-          {menuItems.map((item) => (
-            <S.Item key={item.id} onMouseEnter={() => onMouseEnterHandler(item.id)} onMouseLeave={onMouseLeaveHandler}>
-              {item.title}
-            </S.Item>
-          ))}
-        </S.List>
-        <S.VideoContainer ref={refElement}>
-          <S.Reveal style={{ left }} />
-          {menuItems.map((item) => (
-            <S.Video
-              key={item.id}
-              src={item.videoSource}
-              autoPlay
-              loop
-              muted
-              playsInline
-              isVisible={currentVideo === item.id}
-            />
-          ))}
-        </S.VideoContainer>
-        <S.MenuFooter>
-          <p onMouseEnter={() => setCursorStyle('hover')} onMouseLeave={() => setCursorStyle('normal')}>
-            info@furrow.studio
-          </p>
-          <p onMouseEnter={() => setCursorStyle('hover')} onMouseLeave={() => setCursorStyle('normal')}>
-            +1.902.370.2449
-          </p>
-          <p>&copy; Furrow 2022</p>
-          <Socials />
-        </S.MenuFooter>
-      </S.Container>
-    </S.Wrapper>
+    <AnimatePresence>
+      <S.Wrapper
+        onMouseEnter={() => setCursorStyle('normal')}
+        initial={'hidden'}
+        exit={'visible'}
+        animate={isMenuOpen ? 'visible' : 'hidden'}
+        variants={containerVariant}
+      >
+        <S.Container>
+          <S.Heading>
+            <S.Title>Projects</S.Title>
+            {children}
+          </S.Heading>
+          <S.List>
+            {menuItems.map((item) => (
+              <S.Item
+                key={item.id}
+                onMouseEnter={() => onMouseEnterHandler(item.id)}
+                onMouseLeave={onMouseLeaveHandler}
+                variants={childVariants}
+                initial={{ opacity: 0, marginLeft: '-20%' }}
+              >
+                <AnimatePresence>
+                  {currentVideo === item.id && (
+                    <S.Icon
+                      initial={{ width: '0px' }}
+                      exit={{ width: '0px' }}
+                      animate={{
+                        width: '4rem',
+                      }}
+                      transition={{ duration: 0.1, ease: 'easeInOut' }}
+                    >
+                      <ArrowRightIcon width="6rem" />
+                    </S.Icon>
+                  )}
+                </AnimatePresence>
+                <S.IconText>{item.title}</S.IconText>
+              </S.Item>
+            ))}
+          </S.List>
+          <S.VideoContainer ref={refElement}>
+            <AnimatePresence>
+              {currentVideo !== -1 && (
+                <S.Reveal
+                  style={{ left }}
+                  initial={{ width: '100%' }}
+                  exit={{ width: '100%' }}
+                  animate={{
+                    width: 0,
+                  }}
+                  transition={{ duration: 0.2, ease: 'easeInOut' }}
+                />
+              )}
+            </AnimatePresence>
+            {menuItems.map((item) => (
+              <AnimatePresence key={item.id}>
+                {currentVideo === item.id && (
+                  <S.Video
+                    key={item.id}
+                    src={item.videoSource}
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    initial={{ opacity: 0 }}
+                    exit={{ opacity: 1 }}
+                    animate={{
+                      opacity: 1,
+                    }}
+                    transition={{ duration: 0.2, ease: 'easeInOut' }}
+                  />
+                )}
+              </AnimatePresence>
+            ))}
+          </S.VideoContainer>
+          <S.MenuFooter>
+            <p onMouseEnter={() => setCursorStyle('hover')} onMouseLeave={() => setCursorStyle('normal')}>
+              info@furrow.studio
+            </p>
+            <p onMouseEnter={() => setCursorStyle('hover')} onMouseLeave={() => setCursorStyle('normal')}>
+              +1.902.370.2449
+            </p>
+            <p>&copy; Furrow 2022</p>
+            <Socials />
+          </S.MenuFooter>
+        </S.Container>
+      </S.Wrapper>
+    </AnimatePresence>
   )
 }
 
