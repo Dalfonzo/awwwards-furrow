@@ -7,6 +7,7 @@ type CursorStyleStateI =
   | 'hover'
   | 'hover-accent'
   | 'hover-inverted-accent'
+  | 'locked'
   | 'locked-accent'
   | 'locked-inverted-accent'
 
@@ -22,6 +23,7 @@ interface CursorContextI extends CursorPositionStateI {
   isNormal: boolean
   isNormalWithAccent: boolean
   isNormalWithInvertedAccent: boolean
+  isLocked: boolean
   isLockedWithAccent: boolean
   isLockedWithInvertedAccent: boolean
   setCursorStyle: Dispatch<SetStateAction<CursorStyleStateI>>
@@ -40,6 +42,7 @@ const CursorStyleProvider = ({ children }: { children: React.ReactNode }) => {
   const isNormal = cursorStyle === 'normal'
   const isNormalWithAccent = cursorStyle === 'normal-accent'
   const isNormalWithInvertedAccent = cursorStyle === 'normal-inverted-accent'
+  const isLocked = cursorStyle === 'locked'
   const isLockedWithAccent = cursorStyle === 'locked-accent'
   const isLockedWithInvertedAccent = cursorStyle === 'locked-inverted-accent'
 
@@ -49,6 +52,7 @@ const CursorStyleProvider = ({ children }: { children: React.ReactNode }) => {
         isHovered,
         isHoveredWithAccent,
         isHoveredWithInvertedAccent,
+        isLocked,
         isLockedWithAccent,
         isLockedWithInvertedAccent,
         isNormal,

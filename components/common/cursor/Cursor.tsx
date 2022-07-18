@@ -11,6 +11,7 @@ const Cursor = () => {
     isNormal,
     isNormalWithAccent,
     isNormalWithInvertedAccent,
+    isLocked,
     isLockedWithAccent,
     isLockedWithInvertedAccent,
     x,
@@ -21,8 +22,9 @@ const Cursor = () => {
     const onMouseMoveHandler = (event: MouseEvent) => {
       const { current } = cursorRef
       if (!current) return
-      current.style.left = isLockedWithAccent || isLockedWithInvertedAccent ? `${x}px` : `${event.pageX}px`
-      current.style.top = isLockedWithAccent || isLockedWithInvertedAccent ? `${y}px` : `${event.pageY}px`
+      const cursorIsLocked = isLockedWithAccent || isLockedWithInvertedAccent || isLocked
+      current.style.left = cursorIsLocked ? `${x}px` : `${event.pageX}px`
+      current.style.top = cursorIsLocked ? `${y}px` : `${event.pageY}px`
     }
 
     window.addEventListener('mousemove', onMouseMoveHandler)
@@ -30,7 +32,7 @@ const Cursor = () => {
     return () => {
       window.removeEventListener('mousemove', onMouseMoveHandler)
     }
-  }, [isLockedWithAccent, isLockedWithInvertedAccent, x, y])
+  }, [isLocked, isLockedWithAccent, isLockedWithInvertedAccent, x, y])
 
   return (
     <S.Cursor
@@ -40,6 +42,7 @@ const Cursor = () => {
       isNormal={isNormal}
       isNormalWithAccent={isNormalWithAccent}
       isNormalWithInvertedAccent={isNormalWithInvertedAccent}
+      isLocked={isLocked}
       isLockedWithAccent={isLockedWithAccent}
       isLockedWithInvertedAccent={isLockedWithInvertedAccent}
       ref={cursorRef}

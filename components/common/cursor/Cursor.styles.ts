@@ -4,11 +4,12 @@ interface CursorI {
   isHovered: boolean
   isHoveredWithAccent: boolean
   isHoveredWithInvertedAccent: boolean
+  isLocked: boolean
+  isLockedWithAccent: boolean
+  isLockedWithInvertedAccent: boolean
   isNormal: boolean
   isNormalWithAccent: boolean
   isNormalWithInvertedAccent: boolean
-  isLockedWithAccent: boolean
-  isLockedWithInvertedAccent: boolean
 }
 
 export const Cursor = styled.div<CursorI>`
@@ -45,7 +46,7 @@ export const Cursor = styled.div<CursorI>`
     `}
 
   ${(props) =>
-    props.isHovered &&
+    (props.isHovered || props.isLocked) &&
     css`
       height: 4rem;
       width: 4rem;
