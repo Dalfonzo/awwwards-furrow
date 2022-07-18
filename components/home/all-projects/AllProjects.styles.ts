@@ -19,7 +19,11 @@ export const Button = styled.button`
   color: ${(props) => props.theme.colors.background};
   display: flex;
   font-size: 20px;
-  padding: 1rem;
+  padding: 1.25rem;
   align-items: center;
   margin-left: auto;
+
+  & > div:last-child {
+    right: 0;
+  }
 `

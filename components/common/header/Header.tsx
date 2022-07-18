@@ -1,5 +1,6 @@
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useCursorStyle } from '~/context/cursorStyleContext'
+import { useMenu } from '~/context/menuContext'
 import { useElementPosition } from '~/hooks/useElementPosition'
 import { LogoIcon, MenuIcon } from '../icons'
 import * as S from './Header.styles'
@@ -8,12 +9,10 @@ import Menu from './Menu'
 const Header = ({ asFooter }: { asFooter: boolean }) => {
   const closedMenuIconRef = useRef<HTMLDivElement>(null)
   const openedMenuIconRef = useRef<HTMLDivElement>(null)
+  const { isMenuOpen, toggleMenu } = useMenu()
   const { setCursorStyle, setCursorPosition } = useCursorStyle()
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { x: openedMenuX, y: openedMenuY } = useElementPosition({ elementRef: openedMenuIconRef, deps: [isMenuOpen] })
   const { x: closedMenuX, y: closedMenuY } = useElementPosition({ elementRef: closedMenuIconRef, deps: [isMenuOpen] })
-
-  const toggleMenu = () => setIsMenuOpen((prevState) => !prevState)
 
   const onMouseEnterHandler = ({ accent = true, x, y }: { accent: boolean; x: number; y: number }) => {
     setCursorPosition({ x, y })
