@@ -1,17 +1,23 @@
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import { useCursorStyle } from '~/context/cursorStyleContext'
 import { useElementPosition } from '~/hooks/useElementPosition'
 import { LogoIcon, MenuIcon } from '../icons'
 import * as S from './Header.styles'
+import Menu from './Menu'
 
 const Header = ({ asFooter }: { asFooter: boolean }) => {
-  const menuIconRef = useRef<HTMLDivElement>(null)
-  const { x, y } = useElementPosition({ elementRef: menuIconRef })
+  const closedMenuIconRef = useRef<HTMLDivElement>(null)
+  const openedMenuIconRef = useRef<HTMLDivElement>(null)
   const { setCursorStyle, setCursorPosition } = useCursorStyle()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { x: openedMenuX, y: openedMenuY } = useElementPosition({ elementRef: openedMenuIconRef, deps: [isMenuOpen] })
+  const { x: closedMenuX, y: closedMenuY } = useElementPosition({ elementRef: closedMenuIconRef, deps: [isMenuOpen] })
 
-  const onMouseEnterHandler = () => {
+  const toggleMenu = () => setIsMenuOpen((prevState) => !prevState)
+
+  const onMouseEnterHandler = ({ accent = true, x, y }: { accent: boolean; x: number; y: number }) => {
     setCursorPosition({ x, y })
-    setCursorStyle('locked-accent')
+    setCursorStyle(accent ? 'locked-accent' : 'locked')
   }
 
   return (
@@ -19,12 +25,24 @@ const Header = ({ asFooter }: { asFooter: boolean }) => {
       <S.Container>
         <LogoIcon header={!asFooter} footer={asFooter} />
         <MenuIcon
-          header={!asFooter}
           footer={asFooter}
-          onMouseEnter={onMouseEnterHandler}
+          header={!asFooter}
+          isMenuOpen={isMenuOpen}
+          onClick={toggleMenu}
+          onMouseEnter={() => onMouseEnterHandler({ accent: true, x: closedMenuX, y: closedMenuY })}
           onMouseLeave={() => setCursorStyle('normal-accent')}
-          ref={menuIconRef}
+          ref={closedMenuIconRef}
         />
+        <Menu isMenuOpen={isMenuOpen}>
+          <MenuIcon
+            header={true}
+            isMenuOpen={isMenuOpen}
+            onClick={toggleMenu}
+            onMouseEnter={() => onMouseEnterHandler({ accent: false, x: openedMenuX, y: openedMenuY })}
+            onMouseLeave={() => setCursorStyle('normal')}
+            ref={openedMenuIconRef}
+          />
+        </Menu>
       </S.Container>
     </S.Header>
   )
