@@ -117,5 +117,13 @@ export const MenuFooter = styled.div`
   & div:last-child {
     width: 30%;
     justify-content: flex-end;
+
+    & span:hover > svg {
+      fill: ${(props) => props.theme.colors.text};
+    }
+
+    & span > * {
+      fill: ${(props) => props.theme.colors.background};
+    }
   }
 `

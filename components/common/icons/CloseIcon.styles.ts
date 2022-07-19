@@ -1,10 +1,9 @@
-import { motion } from 'framer-motion'
-import styled, { css } from 'styled-components'
-import { MenuIconI } from './MenuIcon'
+import styled from 'styled-components'
+import { CloseIconI } from './CloseIcon'
 
 const height = '7px'
 
-export const MenuTitle = styled.span`
+export const CloseTitle = styled.span`
   font-family: 'Presicav';
   font-size: 20px;
   font-weight: bold;
@@ -17,10 +16,10 @@ export const MenuTitle = styled.span`
   pointer-events: none;
 `
 
-export const MenuWrapper = styled(motion.div)<MenuIconI>`
+export const CloseIconWrapper = styled.div<CloseIconI>`
   position: absolute;
   right: 2rem;
-  color: ${(props) => props.theme.colors.text};
+  color: ${(props) => props.theme.colors.background};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,21 +27,9 @@ export const MenuWrapper = styled(motion.div)<MenuIconI>`
   &:hover > span {
     opacity: 1;
   }
-
-  ${(props) =>
-    props.header &&
-    css`
-      top: 54px;
-    `}
-
-  ${(props) =>
-    props.footer &&
-    css`
-      bottom: 54px;
-    `}
 `
 
-export const Menu = styled.div`
+export const Close = styled.div`
   position: relative;
   height: calc(${height} * 3);
   width: calc(${height} * 5);
@@ -57,11 +44,17 @@ export const Menu = styled.div`
     left: 0;
   }
 
+  &:before,
+  &:after {
+    top: 50%;
+    left: 50%;
+  }
+
   &:before {
-    top: 0;
+    transform: translate(-50%, -50%) rotate(45deg);
   }
 
   &:after {
-    top: calc(${height} * 2);
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
 `

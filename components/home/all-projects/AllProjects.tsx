@@ -5,7 +5,7 @@ import * as S from './AllProjects.styles'
 
 const AllProjects = () => {
   const { setCursorStyle } = useCursorStyle()
-  const { isMenuOpen, toggleMenu } = useMenu()
+  const { toggleMenu } = useMenu()
 
   return (
     <S.Container {...containerVariantProps}>
@@ -16,7 +16,7 @@ const AllProjects = () => {
         variants={bottomToTopVariant}
       >
         <p>All Projects</p>
-        <S.Menu isMenuOpen={isMenuOpen} noLabel={true} />
+        <S.Menu noLabel={true} />
       </S.Button>
     </S.Container>
   )
