@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { MenuIcon } from '~/components/common/icons'
 import { Container as C } from '~/shared/styles/common.styles'
+import { motion } from 'framer-motion'
 
 export const Container = styled(C)`
   margin-top: 200px;
@@ -12,7 +13,7 @@ export const Menu = styled(MenuIcon)`
   margin-left: 2rem;
 `
 
-export const Button = styled.button`
+export const Button = styled(motion.button)`
   background-color: ${(props) => props.theme.colors.accent};
   border: none;
   font-family: 'Presicav';

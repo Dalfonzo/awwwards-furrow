@@ -1,5 +1,6 @@
 import { useCursorStyle } from '~/context/cursorStyleContext'
 import * as S from './LogoIcon.styles'
+import { bottomToTopHeaderVariant, topToBottomHeaderVariant } from '~/shared/variants'
 
 export interface LogoIconI {
   header?: boolean
@@ -10,7 +11,7 @@ const LogoIcon = (props: LogoIconI) => {
   const { setCursorStyle } = useCursorStyle()
 
   return (
-    <S.Logo {...props}>
+    <S.Logo {...props} variants={props.header ? topToBottomHeaderVariant : bottomToTopHeaderVariant}>
       <svg
         xmlnsXlink="http://www.w3.org/1999/xlink"
         xmlns="http://www.w3.org/2000/svg"

@@ -1,6 +1,6 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { Container as C, H2, H3, InnerContainer as IC } from '~/shared/styles/common.styles'
-
 export const Container = styled(C)`
   margin-top: 305px;
 `
@@ -33,7 +33,7 @@ export const BottomContent = styled.div`
   bottom: -120px;
 `
 
-export const VideoWrapper = styled.div`
+export const VideoWrapper = styled(motion.div)`
   position: relative;
 
   &:hover div div p {

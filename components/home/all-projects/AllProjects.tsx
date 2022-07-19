@@ -1,5 +1,6 @@
 import { useCursorStyle } from '~/context/cursorStyleContext'
 import { useMenu } from '~/context/menuContext'
+import { bottomToTopVariant, containerVariantProps } from '~/shared/variants'
 import * as S from './AllProjects.styles'
 
 const AllProjects = () => {
@@ -7,11 +8,12 @@ const AllProjects = () => {
   const { isMenuOpen, toggleMenu } = useMenu()
 
   return (
-    <S.Container>
+    <S.Container {...containerVariantProps}>
       <S.Button
         onMouseEnter={() => setCursorStyle('hover')}
         onMouseLeave={() => setCursorStyle('normal-accent')}
         onClick={toggleMenu}
+        variants={bottomToTopVariant}
       >
         <p>All Projects</p>
         <S.Menu isMenuOpen={isMenuOpen} noLabel={true} />

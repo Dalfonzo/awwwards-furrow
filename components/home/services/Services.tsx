@@ -1,10 +1,11 @@
-import * as S from './Services.styles'
+import { bottomToTopVariant, containerVariantProps } from '~/shared/variants'
 import Accordion from './Accordion'
+import * as S from './Services.styles'
 
 const Services = () => {
   return (
-    <S.Container>
-      <S.LeftSide>
+    <S.Container {...containerVariantProps}>
+      <S.LeftSide variants={bottomToTopVariant}>
         <S.InnerContainer spaceAsMargin>
           <S.Title>
             Furrow is an integrated, full-service creative studio offering video production, creative development, and
@@ -17,7 +18,7 @@ const Services = () => {
           </S.Description>
         </S.InnerContainer>
       </S.LeftSide>
-      <S.RightSide>
+      <S.RightSide variants={bottomToTopVariant}>
         <S.InnerContainer spaceAsMargin>
           <Accordion />
         </S.InnerContainer>

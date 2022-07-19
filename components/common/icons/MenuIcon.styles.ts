@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styled, { css } from 'styled-components'
 import { MenuIconI } from './MenuIcon'
 
@@ -16,7 +17,7 @@ export const MenuTitle = styled.span`
   pointer-events: none;
 `
 
-export const MenuWrapper = styled.div<MenuIconI>`
+export const MenuWrapper = styled(motion.div)<MenuIconI>`
   position: absolute;
   right: 2rem;
   color: ${(props) => (props.isMenuOpen ? props.theme.colors.primary : props.theme.colors.text)};

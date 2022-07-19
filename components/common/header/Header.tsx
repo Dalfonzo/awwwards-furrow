@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { useCursorStyle } from '~/context/cursorStyleContext'
 import { useMenu } from '~/context/menuContext'
 import { useElementPosition } from '~/hooks/useElementPosition'
+import { containerHeaderVariantProps } from '~/shared/variants'
 import { LogoIcon, MenuIcon } from '../icons'
 import * as S from './Header.styles'
 import Menu from './Menu'
@@ -20,7 +21,7 @@ const Header = ({ asFooter }: { asFooter: boolean }) => {
   }
 
   return (
-    <S.Header>
+    <S.Header {...containerHeaderVariantProps}>
       <S.Container>
         <LogoIcon header={!asFooter} footer={asFooter} />
         <MenuIcon

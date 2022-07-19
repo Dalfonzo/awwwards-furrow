@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const Canvas = styled.canvas`
@@ -15,7 +16,7 @@ export const Video = styled.video`
   object-fit: cover;
 `
 
-export const H1 = styled.h1`
+export const H1 = styled(motion.h1)`
   position: absolute;
   bottom: -146px;
   left: -20px;
@@ -26,4 +27,8 @@ export const H1 = styled.h1`
   display: flex;
   flex-direction: column;
   z-index: 1;
+
+  & > span {
+    position: relative;
+  }
 `

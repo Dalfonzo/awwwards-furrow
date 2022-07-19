@@ -1,6 +1,7 @@
-import Link from 'next/link'
+import { motion } from 'framer-motion'
 import ArrowRightIcon from '~/components/common/icons/ArrowRightIcon'
 import { useCursorStyle } from '~/context/cursorStyleContext'
+import { bottomToTopVariant, containerVariantProps } from '~/shared/variants'
 import * as S from './Featured.styles'
 
 const Featured = () => {
@@ -8,14 +9,15 @@ const Featured = () => {
 
   return (
     <S.Container as={'section'}>
-      <S.InnerContainer spaceAsMargin>
-        <S.Text>
+      <S.InnerContainer spaceAsMargin {...containerVariantProps}>
+        <S.Text variants={bottomToTopVariant}>
           Great stories don’t just happen— they need to be uncovered. And we dig deep to discover the great stories that
           lie just below the surface. Dirt under our fingernails and all.
         </S.Text>
       </S.InnerContainer>
-      <Link href="#">
+      <motion.div {...containerVariantProps}>
         <S.VideoWrapper
+          variants={bottomToTopVariant}
           onMouseEnter={() => setCursorStyle('hover-accent')}
           onMouseLeave={() => setCursorStyle('normal-accent')}
         >
@@ -40,7 +42,7 @@ const Featured = () => {
             </S.BottomContent>
           </S.InnerContainer>
         </S.VideoWrapper>
-      </Link>
+      </motion.div>
     </S.Container>
   )
 }

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { Container as C, H2, InnerContainer as IC } from '~/shared/styles/common.styles'
 
@@ -12,9 +13,9 @@ export const Title = styled(H2)`
   margin-bottom: 45px;
 `
 
-export const RightSide = styled.div``
+export const RightSide = styled(motion.div)``
 
-export const LeftSide = styled.div`
+export const LeftSide = styled(motion.div)`
   width: 60%;
   max-width: 700px;
 `
