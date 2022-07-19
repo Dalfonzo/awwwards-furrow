@@ -22,10 +22,10 @@ const Hero = () => {
     ctxRef.current = canvas.getContext('2d')
 
     if (!ctxRef.current) return
-
+    ctxRef.current.globalCompositeOperation = 'source-over'
     ctxRef.current.fillStyle = isDarkMode ? '#000' : '#FFF'
     ctxRef.current.fillRect(0, 0, width, height)
-  }, [width, height, isDarkMode])
+  }, [isDarkMode, width, height])
 
   const onMouseMoveHandler: MouseEventHandler<HTMLCanvasElement> = (event) => {
     const { pageX: currentX, pageY: currentY } = event
