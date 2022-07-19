@@ -6,11 +6,10 @@ export const Wrapper = styled(motion.div)`
   position: fixed;
   top: 0;
   left: 0;
-
   width: 100vw;
   height: 100vh;
   background: ${(props) => props.theme.colors.accent};
-  color: ${(props) => props.theme.colors.primary};
+  color: ${(props) => props.theme.colors.background};
 `
 
 export const Container = styled(C)`

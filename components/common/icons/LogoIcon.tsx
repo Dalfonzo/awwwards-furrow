@@ -1,6 +1,7 @@
 import { useCursorStyle } from '~/context/cursorStyleContext'
-import * as S from './LogoIcon.styles'
+import { useCustomTheme } from '~/context/themeContext'
 import { bottomToTopHeaderVariant, topToBottomHeaderVariant } from '~/shared/variants'
+import * as S from './LogoIcon.styles'
 
 export interface LogoIconI {
   header?: boolean
@@ -9,7 +10,7 @@ export interface LogoIconI {
 
 const LogoIcon = (props: LogoIconI) => {
   const { setCursorStyle } = useCursorStyle()
-
+  const { toggleTheme } = useCustomTheme()
   return (
     <S.Logo {...props} variants={props.header ? topToBottomHeaderVariant : bottomToTopHeaderVariant}>
       <svg
@@ -44,6 +45,7 @@ const LogoIcon = (props: LogoIconI) => {
           d="M98.045 11.358c0 4.162-3.313 7.536-7.4 7.536-4.088 0-7.4-3.374-7.4-7.536 0-4.162 3.312-7.536 7.4-7.536 4.087 0 7.4 3.374 7.4 7.536"
           accent
           onMouseEnter={() => setCursorStyle('hover')}
+          onClick={toggleTheme}
         />
       </svg>
     </S.Logo>

@@ -47,6 +47,7 @@ export const VideoWrapper = styled(motion.div)`
   }
 
   & > div:last-child div span svg {
+    fill: currentColor;
     position: relative;
     transition: left 0.45s cubic-bezier(0.4, 0, 0.2, 1);
     transition-delay: 0s;
