@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import styled, { css } from 'styled-components'
+import { responsiveFontSize } from '../utils/responsiveProperties'
 
 export const Container = styled(motion.div)`
   max-width: ${(props) => props.theme.breakPoints.lg};
@@ -27,12 +28,12 @@ export const InnerContainer = styled(motion.div)<InnerContainerI>`
 `
 
 export const H2 = styled(motion.h2)`
-  font-size: 2.625rem;
   font-weight: 500;
   line-height: 1;
+  ${responsiveFontSize('24px', '42px')};
 `
 
 export const H3 = styled(motion.h3)`
-  font-size: 1.25rem;
+  ${responsiveFontSize('18px', '20px')};
   font-weight: bold;
 `

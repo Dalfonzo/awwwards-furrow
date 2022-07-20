@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { Container as C, H2, H3, InnerContainer as IC } from '~/shared/styles/common.styles'
+import { responsiveFontSize } from '~/shared/utils/responsiveProperties'
+
 export const Container = styled(C)`
   margin-top: 305px;
 `
@@ -22,7 +24,7 @@ export const Video = styled.video`
 `
 
 export const Title = styled.h3`
-  font-size: 7.5rem;
+  ${responsiveFontSize('60px', '120px')};
   text-transform: uppercase;
   font-weight: 900;
   line-height: 0.7;

@@ -1,7 +1,8 @@
+import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { MenuIcon } from '~/components/common/icons'
 import { Container as C } from '~/shared/styles/common.styles'
-import { motion } from 'framer-motion'
+import { responsiveFontSize } from '~/shared/utils/responsiveProperties'
 
 export const Container = styled(C)`
   margin-top: 200px;
@@ -19,7 +20,7 @@ export const Button = styled(motion.button)`
   font-family: 'Presicav';
   color: ${(props) => props.theme.colors.background};
   display: flex;
-  font-size: 20px;
+  ${responsiveFontSize('18px', '20px')};
   padding: 1.25rem;
   align-items: center;
   margin-left: auto;

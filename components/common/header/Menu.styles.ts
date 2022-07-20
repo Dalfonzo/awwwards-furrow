@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { Container as C, H3 } from '~/shared/styles/common.styles'
+import { responsiveFontSize } from '~/shared/utils/responsiveProperties'
 
 export const Wrapper = styled(motion.div)`
   position: fixed;
@@ -21,7 +22,7 @@ export const Container = styled(C)`
 `
 
 export const List = styled.ul`
-  font-size: 3.5625rem;
+  ${responsiveFontSize('28px', '57px')};
   font-weight: 900;
   text-transform: uppercase;
   list-style: none;
@@ -100,7 +101,7 @@ export const MenuFooter = styled.div`
   padding: 3rem 0;
 
   & p {
-    font-size: 1.25rem;
+    ${responsiveFontSize('28px', '14px')};
     line-height: 1.0714285714;
     font-family: 'Presicav', sans-serif;
     font-weight: 700;

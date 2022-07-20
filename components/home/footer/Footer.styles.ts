@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Container as C, InnerContainer as IC } from '~/shared/styles/common.styles'
+import { responsiveFontSize } from '~/shared/utils/responsiveProperties'
 
 export const Container = styled(C)`
   margin-top: 200px;
@@ -35,7 +36,7 @@ export const Container = styled(C)`
 export const InnerContainer = styled(IC)``
 
 export const Text = styled.p`
-  font-size: 1.125rem;
+  ${responsiveFontSize('18px', '20px')};
   font-weight: 700;
   font-family: 'Presicav';
 `
