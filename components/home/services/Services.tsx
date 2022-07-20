@@ -4,7 +4,7 @@ import * as S from './Services.styles'
 
 const Services = () => {
   return (
-    <S.Container {...containerVariantProps}>
+    <S.Container {...containerVariantProps} as={'section'}>
       <S.LeftSide variants={bottomToTopVariant}>
         <S.InnerContainer spaceAsMargin>
           <S.Title>

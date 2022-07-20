@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
-import { responsiveFontSize } from '~/shared/utils/responsiveProperties'
+import { responsiveFontSize, responsiveProperty } from '~/shared/utils/responsiveProperties'
 
 export const Canvas = styled.canvas`
   position: absolute;
@@ -19,7 +19,6 @@ export const Video = styled.video`
 
 export const H1 = styled(motion.h1)`
   position: absolute;
-  bottom: -146px;
   left: -20px;
   pointer-events: none;
   font-weight: 900;
@@ -27,6 +26,7 @@ export const H1 = styled(motion.h1)`
   display: flex;
   flex-direction: column;
   z-index: 1;
+  ${responsiveProperty([{ maxSize: '-146px', minSize: '-58px', property: 'bottom' }])};
   ${responsiveFontSize('160px', '420px')};
 
   & > span {

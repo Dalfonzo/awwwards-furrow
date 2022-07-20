@@ -1,14 +1,16 @@
 import styled from 'styled-components'
 import { Container as C, InnerContainer as IC } from '~/shared/styles/common.styles'
-import { responsiveFontSize } from '~/shared/utils/responsiveProperties'
+import { responsiveFontSize, responsiveProperty } from '~/shared/utils/responsiveProperties'
 
 export const Container = styled(C)`
-  margin-top: 200px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: ${(props) => props.theme.colors.accent};
-  padding-bottom: 290px;
+  ${responsiveProperty([
+    { minSize: '50px', maxSize: '200px', property: 'margin-top' },
+    { minSize: '160px', maxSize: '290px', property: 'padding-bottom' },
+  ])};
 
   & div:first-child > *:hover {
     color: ${(props) => props.theme.colors.text};
@@ -31,6 +33,11 @@ export const Container = styled(C)`
       fill: ${(props) => props.theme.colors.text};
     }
   }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `
 
 export const InnerContainer = styled(IC)``
@@ -39,4 +46,8 @@ export const Text = styled.p`
   ${responsiveFontSize('18px', '20px')};
   font-weight: 700;
   font-family: 'Presicav';
+
+  @media (max-width: 768px) {
+    margin: 0.2rem 0;
+  }
 `

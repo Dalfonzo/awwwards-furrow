@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import styled, { css } from 'styled-components'
-import { responsiveFontSize } from '../utils/responsiveProperties'
+import { responsiveFontSize, responsiveProperty } from '../utils/responsiveProperties'
 
 export const Container = styled(motion.div)`
   max-width: ${(props) => props.theme.breakPoints.lg};
@@ -17,13 +17,13 @@ export const InnerContainer = styled(motion.div)<InnerContainerI>`
   ${(props) =>
     props.spaceAsPadding &&
     css`
-      padding-left: 100px;
+      ${responsiveProperty([{ maxSize: '100px', minSize: '32px', property: 'padding-left' }])}
     `}
 
   ${(props) =>
     props.spaceAsMargin &&
     css`
-      margin-left: 100px;
+      ${responsiveProperty([{ maxSize: '100px', minSize: '32px', property: 'margin-left' }])}
     `}
 `
 

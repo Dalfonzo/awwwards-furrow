@@ -1,20 +1,26 @@
 import { motion } from 'framer-motion'
 import styled from 'styled-components'
 import { Container as C, H2, H3, InnerContainer as IC } from '~/shared/styles/common.styles'
-import { responsiveFontSize } from '~/shared/utils/responsiveProperties'
+import { responsiveFontSize, responsiveProperty } from '~/shared/utils/responsiveProperties'
 
 export const Container = styled(C)`
-  margin-top: 305px;
+  ${responsiveProperty([{ maxSize: '305px', minSize: '80px', property: 'margin-top' }])};
+  padding: 0;
+
+  @media (min-width: 1024px) {
+    padding: 0 2rem;
+  }
 `
 
 export const InnerContainer = styled(IC)`
-  margin-right: 100px;
+  ${responsiveProperty([{ maxSize: '100px', minSize: '16px', property: 'margin-right' }])};
 `
 
 export const Text = styled(H2)`
   margin: 0;
   max-width: 640px;
   margin-bottom: 210px;
+  ${responsiveProperty([{ maxSize: '210px', minSize: '90px', property: 'margin-bottom' }])};
 `
 
 export const Video = styled.video`
