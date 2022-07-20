@@ -1,8 +1,7 @@
 import { createContext, useContext, useState } from 'react'
-import { DefaultTheme } from 'styled-components'
+import { DefaultTheme, ThemeProvider } from 'styled-components'
+import GlobalStyles from '~/shared/styles/global.styles'
 import { darkTheme, lightTheme } from '~/shared/theme'
-import { ThemeProvider } from 'styled-components'
-
 interface ThemeContextI {
   theme: DefaultTheme
   toggleTheme: () => void
@@ -32,7 +31,10 @@ const CustomThemeProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <ThemeContext.Provider value={{ theme: currentTheme.theme, toggleTheme, isLightMode, isDarkMode }}>
-      <ThemeProvider theme={currentTheme.theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={currentTheme.theme}>
+        <GlobalStyles />
+        {children}
+      </ThemeProvider>
     </ThemeContext.Provider>
   )
 }

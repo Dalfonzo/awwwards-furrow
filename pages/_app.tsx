@@ -4,7 +4,6 @@ import { LayoutDimensionsProvider } from '~/context/layoutDimensionsContext'
 import { MenuProvider } from '~/context/menuContext'
 import { CustomThemeProvider } from '~/context/themeContext'
 import LandingLayout from '~/layouts/LandingLayout'
-import GlobalStyles from '~/shared/styles/global.styles'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,10 +12,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <CursorStyleProvider>
           <LayoutDimensionsProvider>
             <LandingLayout>
-              <>
-                <GlobalStyles />
-                <Component {...pageProps} />
-              </>
+              <Component {...pageProps} />
             </LandingLayout>
           </LayoutDimensionsProvider>
         </CursorStyleProvider>
