@@ -1,54 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 
 export default createGlobalStyle`
-
-  @font-face {
-    font-family: 'Calibre';
-    font-weight:300;
-    src: url('/assets/fonts/Calibre-Light.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Calibre';
-    font-weight:400;
-    src: url('/assets/fonts/Calibre-Regular.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Calibre';
-    font-weight:600;
-    src: url('/assets/fonts/Calibre-SemiBold.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Calibre';
-    font-weight:800;
-    src: url('/assets/fonts/Calibre-Bold.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Calibre';
-    font-weight:900;
-    src: url('/assets/fonts/Calibre-Black.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Presicav';
-    font-weight: 400;
-    src: url('/assets/fonts/PresicavRg-Regular.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Presicav';
-    font-weight: 800;
-    src: url('/assets/fonts/PresicavRg-Bold.ttf') format('truetype');
-  }
-
   * {
     margin: 0;
     padding: 0;
     text-decoration: none;
-    /* cursor: none; */
+    cursor: none;
   }
 
   *,
