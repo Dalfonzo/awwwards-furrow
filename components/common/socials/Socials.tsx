@@ -5,14 +5,23 @@ import { useMenu } from '~/context/menuContext'
 import { useElementPosition } from '~/hooks/useElementPosition'
 import * as S from './Socials.styles'
 
-const Socials = ({ accentColor }: { accentColor?: boolean }) => {
+const Socials = ({ accentColor, isAnimationCompleted }: { accentColor?: boolean; isAnimationCompleted?: boolean }) => {
   const instagramIconRef = useRef<HTMLElement>(null)
   const { isMenuOpen } = useMenu()
   const vimeoIconRef = useRef<HTMLElement>(null)
   const facebookIconRef = useRef<HTMLElement>(null)
-  const { x: instagramX, y: instagramY } = useElementPosition({ elementRef: instagramIconRef, deps: [isMenuOpen] })
-  const { x: vimeoX, y: vimeoY } = useElementPosition({ elementRef: vimeoIconRef, deps: [isMenuOpen] })
-  const { x: facebookX, y: facebookY } = useElementPosition({ elementRef: facebookIconRef, deps: [isMenuOpen] })
+  const { x: instagramX, y: instagramY } = useElementPosition({
+    elementRef: instagramIconRef,
+    deps: [isMenuOpen, isAnimationCompleted],
+  })
+  const { x: vimeoX, y: vimeoY } = useElementPosition({
+    elementRef: vimeoIconRef,
+    deps: [isMenuOpen, isAnimationCompleted],
+  })
+  const { x: facebookX, y: facebookY } = useElementPosition({
+    elementRef: facebookIconRef,
+    deps: [isMenuOpen, isAnimationCompleted],
+  })
   const { setCursorStyle, setCursorPosition } = useCursorStyle()
 
   const onMouseEnterHandler = ({ x, y }: { x: number; y: number }) => {

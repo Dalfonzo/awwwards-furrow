@@ -1,15 +1,16 @@
 import { motion } from 'framer-motion'
 import Socials from '~/components/common/socials/Socials'
 import { useCursorStyle } from '~/context/cursorStyleContext'
+import { useAnimationStatus } from '~/hooks/useAnimationStatus'
 import { bottomToTopVariant, containerVariantProps } from '~/shared/variants'
-
 import * as S from './Footer.styles'
 
 const Footer = () => {
   const { setCursorStyle } = useCursorStyle()
+  const { isAnimationCompleted, onAnimationComplete } = useAnimationStatus()
 
   return (
-    <S.Container {...containerVariantProps}>
+    <S.Container {...containerVariantProps} onAnimationComplete={onAnimationComplete}>
       <motion.div variants={bottomToTopVariant}>
         <S.Text
           onMouseEnter={() => setCursorStyle('hover-accent')}
@@ -29,7 +30,7 @@ const Footer = () => {
         <S.Text>Charlottetown, PE C1A 1K8</S.Text>
       </motion.div>
       <motion.div variants={bottomToTopVariant}>
-        <Socials accentColor />
+        <Socials accentColor isAnimationCompleted={isAnimationCompleted} />
       </motion.div>
     </S.Container>
   )

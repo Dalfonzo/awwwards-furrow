@@ -7,7 +7,7 @@ export const bottomToTopVariant = {
     y: 0,
     opacity: 1,
     transition: {
-      duration: 0.8,
+      duration: 0.4,
     },
   },
 }
@@ -17,6 +17,6 @@ export const containerVariantProps = {
   whileInView: 'onscreen',
   viewport: {
     margin: '500px 0px 0px 0px',
-    //  once: true,
+    once: true,
   },
 }

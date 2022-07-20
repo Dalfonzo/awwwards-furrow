@@ -6,7 +6,15 @@ import { ArrowRightIcon } from '../icons'
 import Socials from '../socials/Socials'
 import * as S from './Menu.styles'
 
-const Menu = ({ isMenuOpen, children }: { isMenuOpen: boolean; children: ReactNode }) => {
+interface MenuI {
+  isMenuOpen: boolean
+  children: ReactNode
+  onAnimationComplete(): void
+  onAnimationStart(): void
+  isAnimationCompleted: boolean
+}
+
+const Menu = ({ isMenuOpen, children, onAnimationComplete, onAnimationStart, isAnimationCompleted }: MenuI) => {
   const { setCursorStyle } = useCursorStyle()
   const refElement = useRef<HTMLDivElement>(null)
   const { left } = useElementPosition({ elementRef: refElement })
@@ -68,6 +76,8 @@ const Menu = ({ isMenuOpen, children }: { isMenuOpen: boolean; children: ReactNo
         exit={'visible'}
         animate={isMenuOpen ? 'visible' : 'hidden'}
         variants={containerVariant}
+        onAnimationComplete={onAnimationComplete}
+        onAnimationStart={onAnimationStart}
       >
         <S.Container>
           <S.Heading>
@@ -144,7 +154,7 @@ const Menu = ({ isMenuOpen, children }: { isMenuOpen: boolean; children: ReactNo
               +1.902.370.2449
             </p>
             <p>&copy; Furrow 2022</p>
-            <Socials />
+            <Socials isAnimationCompleted={isAnimationCompleted} />
           </S.MenuFooter>
         </S.Container>
       </S.Wrapper>
