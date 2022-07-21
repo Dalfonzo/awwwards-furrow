@@ -18,6 +18,12 @@ export default createGlobalStyle`
     box-sizing: border-box;
     font-size: 16px;
     font-family:'Calibre' ,-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  html::-webkit-scrollbar {
+    display: none;
   }
 
   body {
