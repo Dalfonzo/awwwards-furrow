@@ -50,7 +50,7 @@ const Hero = () => {
 
   const containerVariant = {
     hidden: {
-      opacity: 1,
+      opacity: 0,
     },
     visible: {
       opacity: 1,
@@ -61,9 +61,10 @@ const Hero = () => {
   }
 
   const titleVariant = {
-    hidden: { top: '800px' },
+    hidden: { top: '800px', opacity: 0 },
     visible: {
       top: '0px',
+      opacity: 1,
       transition: {
         duration: 1,
         ease: [0.6, 0.05, -0.01, 0.9],
