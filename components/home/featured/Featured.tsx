@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import LazyLoad from 'react-lazyload'
 import ArrowRightIcon from '~/components/common/icons/ArrowRightIcon'
 import { useCursorStyle } from '~/context/cursorStyleContext'
 import { bottomToTopVariant, containerVariantProps } from '~/shared/variants'
@@ -16,32 +17,34 @@ const Featured = () => {
         </S.Text>
       </S.InnerContainer>
       <motion.div {...containerVariantProps}>
-        <S.VideoWrapper
-          variants={bottomToTopVariant}
-          onMouseEnter={() => setCursorStyle('hover-accent')}
-          onMouseLeave={() => setCursorStyle('normal-accent')}
-        >
-          <S.Video src="/assets/video/featured-video.mp4" autoPlay loop muted playsInline />
-          <S.TopContent>
-            <S.InnerContainer spaceAsPadding>
-              <S.Header>Featured Project</S.Header>
-              <S.Description>
-                Lobster PEI <span>2020</span>
-              </S.Description>
+        <LazyLoad>
+          <S.VideoWrapper
+            variants={bottomToTopVariant}
+            onMouseEnter={() => setCursorStyle('hover-accent')}
+            onMouseLeave={() => setCursorStyle('normal-accent')}
+          >
+            <S.Video src="/assets/video/featured-video.mp4" autoPlay loop muted playsInline />
+            <S.TopContent>
+              <S.InnerContainer spaceAsPadding>
+                <S.Header>Featured Project</S.Header>
+                <S.Description>
+                  Lobster PEI <span>2020</span>
+                </S.Description>
+              </S.InnerContainer>
+            </S.TopContent>
+            <S.InnerContainer spaceAsMargin>
+              <S.BottomContent>
+                <S.Title>
+                  red <br />
+                  runs deep
+                </S.Title>
+                <span>
+                  <ArrowRightIcon />
+                </span>
+              </S.BottomContent>
             </S.InnerContainer>
-          </S.TopContent>
-          <S.InnerContainer spaceAsMargin>
-            <S.BottomContent>
-              <S.Title>
-                red <br />
-                runs deep
-              </S.Title>
-              <span>
-                <ArrowRightIcon />
-              </span>
-            </S.BottomContent>
-          </S.InnerContainer>
-        </S.VideoWrapper>
+          </S.VideoWrapper>
+        </LazyLoad>
       </motion.div>
     </S.Container>
   )

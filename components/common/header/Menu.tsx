@@ -1,5 +1,6 @@
 import { AnimatePresence } from 'framer-motion'
 import { ReactNode, useRef, useState } from 'react'
+import LazyLoad from 'react-lazyload'
 import { useCursorStyle } from '~/context/cursorStyleContext'
 import { useElementPosition } from '~/hooks/useElementPosition'
 import { ArrowRightIcon } from '../icons'
@@ -111,41 +112,43 @@ const Menu = ({ isMenuOpen, children, onAnimationComplete, onAnimationStart, isA
               </S.Item>
             ))}
           </S.List>
-          <S.VideoContainer ref={refElement}>
-            <AnimatePresence>
-              {currentVideo !== -1 && (
-                <S.Reveal
-                  style={{ left }}
-                  initial={{ width: '100%' }}
-                  exit={{ width: '100%' }}
-                  animate={{
-                    width: 0,
-                  }}
-                  transition={{ duration: 0.2, ease: 'easeInOut' }}
-                />
-              )}
-            </AnimatePresence>
-            {menuItems.map((item) => (
-              <AnimatePresence key={item.id}>
-                {currentVideo === item.id && (
-                  <S.Video
-                    key={item.id}
-                    src={item.videoSource}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    initial={{ opacity: 0 }}
-                    exit={{ opacity: 1 }}
+          <LazyLoad>
+            <S.VideoContainer ref={refElement}>
+              <AnimatePresence>
+                {currentVideo !== -1 && (
+                  <S.Reveal
+                    style={{ left }}
+                    initial={{ width: '100%' }}
+                    exit={{ width: '100%' }}
                     animate={{
-                      opacity: 1,
+                      width: 0,
                     }}
                     transition={{ duration: 0.2, ease: 'easeInOut' }}
                   />
                 )}
               </AnimatePresence>
-            ))}
-          </S.VideoContainer>
+              {menuItems.map((item) => (
+                <AnimatePresence key={item.id}>
+                  {currentVideo === item.id && (
+                    <S.Video
+                      key={item.id}
+                      src={item.videoSource}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      initial={{ opacity: 0 }}
+                      exit={{ opacity: 1 }}
+                      animate={{
+                        opacity: 1,
+                      }}
+                      transition={{ duration: 0.2, ease: 'easeInOut' }}
+                    />
+                  )}
+                </AnimatePresence>
+              ))}
+            </S.VideoContainer>
+          </LazyLoad>
           <S.MenuFooter>
             <p onMouseEnter={() => setCursorStyle('hover')} onMouseLeave={() => setCursorStyle('normal')}>
               info@furrow.studio
