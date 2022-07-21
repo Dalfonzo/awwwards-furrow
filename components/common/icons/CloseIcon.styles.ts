@@ -12,6 +12,10 @@ export const CloseTitle = styled.span`
   opacity: 0;
   transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `
 
 export const CloseIconWrapper = styled.div<CloseIconI>`
