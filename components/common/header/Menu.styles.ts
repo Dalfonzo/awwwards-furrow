@@ -76,6 +76,10 @@ export const VideoContainer = styled.div`
   right: 0;
   top: 0;
   z-index: -1;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `
 
 export const Reveal = styled(motion.div)`
@@ -99,9 +103,15 @@ export const MenuFooter = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 3rem 0;
+  ${responsiveFontSize('14px', '20px')};
+
+  @media (max-width: 1024px) {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
 
   & p {
-    ${responsiveFontSize('28px', '14px')};
     line-height: 1.0714285714;
     font-family: 'Presicav', sans-serif;
     font-weight: 700;
@@ -111,14 +121,12 @@ export const MenuFooter = styled.div`
       font-size: 0.8em;
     }
   }
+
   & p:hover:not(:last-of-type) {
     color: ${(props) => props.theme.colors.text};
   }
 
   & div:last-child {
-    width: 30%;
-    justify-content: flex-end;
-
     & span:hover > svg {
       fill: ${(props) => props.theme.colors.text};
     }
@@ -126,5 +134,23 @@ export const MenuFooter = styled.div`
     & span > * {
       fill: ${(props) => props.theme.colors.background};
     }
+  }
+`
+
+export const BottomContainer = styled.div`
+  ${responsiveFontSize('14px', '20px')};
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: 1024px) {
+    flex-direction: row-reverse;
+  }
+`
+
+export const Address = styled.p`
+  @media (min-width: 1024px) {
+    display: none;
   }
 `

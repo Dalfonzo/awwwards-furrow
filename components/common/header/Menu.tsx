@@ -153,8 +153,13 @@ const Menu = ({ isMenuOpen, children, onAnimationComplete, onAnimationStart, isA
             <p onMouseEnter={() => setCursorStyle('hover')} onMouseLeave={() => setCursorStyle('normal')}>
               +1.902.370.2449
             </p>
-            <p>&copy; Furrow 2022</p>
-            <Socials isAnimationCompleted={isAnimationCompleted} />
+            <S.Address>
+              77 Grafton Street <br /> Charlottetown, PE C1A 1K8
+            </S.Address>
+            <S.BottomContainer>
+              <p>&copy; Furrow 2022</p>
+              <Socials isAnimationCompleted={isAnimationCompleted} />
+            </S.BottomContainer>
           </S.MenuFooter>
         </S.Container>
       </S.Wrapper>

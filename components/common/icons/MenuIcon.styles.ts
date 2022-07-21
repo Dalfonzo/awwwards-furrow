@@ -2,8 +2,6 @@ import { motion } from 'framer-motion'
 import styled, { css } from 'styled-components'
 import { MenuIconI } from './MenuIcon'
 
-const height = '7px'
-
 export const MenuTitle = styled.span`
   font-family: 'Presicav';
   font-size: 20px;
@@ -43,16 +41,22 @@ export const MenuWrapper = styled(motion.div)<MenuIconI>`
 `
 
 export const Menu = styled.div`
+  --height: 7px;
+
+  @media (max-width: 768px) {
+    --height: 5px;
+  }
+
   position: relative;
-  height: calc(${height} * 3);
-  width: calc(${height} * 5);
+  height: calc(var(--height) * 3);
+  width: calc(var(--height) * 5);
 
   &:before,
   &:after {
     content: '';
     background: currentColor;
-    height: ${height};
-    width: calc(${height} * 5);
+    height: var(--height);
+    width: calc(var(--height) * 5);
     position: absolute;
     left: 0;
   }
@@ -62,6 +66,6 @@ export const Menu = styled.div`
   }
 
   &:after {
-    top: calc(${height} * 2);
+    top: calc(var(--height) * 2);
   }
 `

@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { CloseIconI } from './CloseIcon'
 
-const height = '7px'
-
 export const CloseTitle = styled.span`
   font-family: 'Presicav';
   font-size: 20px;
@@ -30,16 +28,22 @@ export const CloseIconWrapper = styled.div<CloseIconI>`
 `
 
 export const Close = styled.div`
+  --height: 7px;
+
+  @media (max-width: 768px) {
+    --height: 5px;
+  }
+
   position: relative;
-  height: calc(${height} * 3);
-  width: calc(${height} * 5);
+  height: calc(var(--height) * 3);
+  width: calc(var(--height) * 5);
 
   &:before,
   &:after {
     content: '';
     background: currentColor;
-    height: ${height};
-    width: calc(${height} * 5);
+    height: var(--height);
+    width: calc(var(--height) * 5);
     position: absolute;
     left: 0;
   }
